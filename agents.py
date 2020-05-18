@@ -34,8 +34,8 @@ class Random(Agent):
 class QLearning(Agent):
     """ QLearning Agent """
 
-    learning_rate = 0.8
-    discount_factor = 0.9
+    learning_rate = 0.3
+    discount_factor = 0.7
 
     def __init__(self, action_space):
         super().__init__(action_space)

@@ -13,10 +13,6 @@ class Agent(ABC):
         self.action_space = action_space
 
     @abstractmethod
-    def explore(self, observation):
-        pass
-
-    @abstractmethod
     def act(self, observation):
         pass
 
@@ -28,9 +24,6 @@ class Agent(ABC):
 class Random(Agent):
     """ Random Agent """
 
-    def explore(self, *args):
-        return self.action_space.sample()
-
     def act(self, *args):
         return self.action_space.sample()
 
@@ -41,7 +34,7 @@ class Random(Agent):
 class QLearning(Agent):
     """ QLearning Agent """
 
-    learning_rate = 0.1
+    learning_rate = 0.8
     discount_factor = 0.9
 
     def __init__(self, action_space):
@@ -60,12 +53,6 @@ class QLearning(Agent):
         )  # Randomly break ties
 
         return action, action_qs[action]
-
-    def explore(self, observation):
-        """
-        Act randomly to explore
-        """
-        return self.action_space.sample()
 
     def act(self, observation):
         """
